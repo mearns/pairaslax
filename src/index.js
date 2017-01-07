@@ -25,6 +25,8 @@ function load () {
         ele.style.backgroundColor = this.getBackgroundColor();
         ele.style.width = `${dim.w*scale}px`;
         ele.style.height = `${dim.h*scale}px`;
+        ele.appendChild(document.createTextNode('Hello'));
+        ele.style.fontSize = `${parseInt(40*scale)}px`;
         containerEle.appendChild(ele);
     };
     Square.prototype.getBackgroundColor = function () {
@@ -68,7 +70,7 @@ function load () {
     scene.render(frameContainerElem);
 
     const step = function (ttl) {
-        scene.move({x: -4, y: 1.5});
+        scene.move({x: -4, y: 1.5, z: 0});
         scene.render(frameContainerElem);
         console.log(ttl);
         if (ttl > 0) {
