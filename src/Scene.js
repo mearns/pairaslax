@@ -10,8 +10,20 @@ Scene.prototype._init = function (options) {
     this._sceneObjects = [];
 };
 
+/**
+ * Add a new scene. Keeps scene objects sorted by Z index, from highest to lowest.
+ */
 Scene.prototype.addObject = function (sceneObj) {
-    this._sceneObjects.push(sceneObj);
+    const z = sceneObj.getLocation().z;
+    if (this._sceneObjects.every((existingObject, index) => {
+        if (existingObject.getLocation().z < z) {
+            this._sceneObjects.splice(index, 0, sceneObj);
+            return false;
+        }
+        return true;
+    }, this)) {
+        this._sceneObjects.push(sceneObj);
+    }
 };
 
 Scene.prototype.move = function(delta) {

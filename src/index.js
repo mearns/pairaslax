@@ -68,7 +68,7 @@ function load () {
     scene.render(frameContainerElem);
 
     const step = function (ttl) {
-        scene.move({x: -3, y: 0.5});
+        scene.move({x: -4, y: 1.5});
         scene.render(frameContainerElem);
         console.log(ttl);
         if (ttl > 0) {
