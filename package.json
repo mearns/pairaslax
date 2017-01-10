@@ -1,0 +1,67 @@
+{
+  "name": "pairaslax",
+  "version": "0.0.0",
+  "description": "Parallaxy web UI",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf dist/ && rimraf coverage/",
+    "check": "eslint src/ test/ --ext .js --ext .jsx",
+    "compile": "webpack --config ./dist/webpack.config.js",
+    "test": "nyc mocha",
+    "build": "npm run clean && npm run check && npm run cover && npm run compile",
+    "start": "node dist/app/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/mearns/pairaslax.git"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react"
+    ],
+    "plugins": [
+      "transform-object-assign"
+    ]
+  },
+  "nyc": {
+    "reporter": [
+      "text",
+      "lcov"
+    ],
+    "require": [
+      "babel-core/register"
+    ],
+    "include": [
+      "src/**"
+    ],
+    "all": true,
+    "check-coverage": true,
+    "statements": 0,
+    "branches": 0,
+    "functions": 0,
+    "lines": 0
+  },
+  "author": "Brian Mearns",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mearns/pairaslax/issues"
+  },
+  "homepage": "https://github.com/mearns/pairaslax#readme",
+  "devDependencies": {
+    "babel-cli": "6.18.0",
+    "babel-eslint": "7.1.0",
+    "babel-loader": "6.2.0",
+    "babel-plugin-transform-object-assign": "6.8.0",
+    "babel-preset-es2015": "6.18.0",
+    "babel-preset-react": "6.16.0",
+    "eslint-loader": "1.6.1",
+    "eslint-plugin-react": "6.8.0",
+    "jsx-loader": "0.13.2",
+    "mkdirp": "0.5.1",
+    "mocha": "3.1.2",
+    "nyc": "8.4.0",
+    "rimraf": "2.5.4",
+    "webpack": "1.13.0"
+  }
+}
