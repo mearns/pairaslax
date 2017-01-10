@@ -64,5 +64,9 @@
     "nyc": "8.4.0",
     "rimraf": "2.5.4",
     "webpack": "1.13.0"
+  },
+  "dependencies": {
+    "react": "15.4.2",
+    "react-dom": "15.4.2"
   }
 }
