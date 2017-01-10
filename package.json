@@ -2,14 +2,16 @@
   "name": "pairaslax",
   "version": "0.0.0",
   "description": "Parallaxy web UI",
-  "main": "index.js",
   "scripts": {
-    "clean": "rimraf dist/ && rimraf coverage/",
-    "check": "eslint src/ test/ --ext .js --ext .jsx",
-    "compile": "webpack --config webpack.config.js",
+    "clean": "rimraf dist/",
+    "check:lint:src": "eslint src/ --ext .js --ext .jsx",
+    "check:lint:webpack-config": "eslint webpack.config.js",
+    "check:lint": "npm run check:lint:src && npm run check:lint:webpack-config",
+    "check": "npm run check:lint",
     "test": "nyc mocha",
-    "build": "npm run clean && npm run check && npm run cover && npm run compile",
-    "start": "node dist/app/index.js"
+    "compile:webpack": "webpack --config webpack.config.js",
+    "compile": "npm run compile:webpack",
+    "build": "npm run clean && npm run check && npm run compile"
   },
   "repository": {
     "type": "git",
@@ -56,7 +58,6 @@
     "babel-preset-es2015": "6.18.0",
     "babel-preset-react": "6.16.0",
     "eslint": "3.13.1",
-    "eslint-loader": "1.6.1",
     "eslint-plugin-react": "6.8.0",
     "jsx-loader": "0.13.2",
     "mkdirp": "0.5.1",

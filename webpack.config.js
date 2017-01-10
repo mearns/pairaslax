@@ -16,14 +16,6 @@ const webpackConfig = {
         filename: `[name]-${VERSION}.js`
     },
     module: {
-        preLoaders: [
-            // Lint all JS files before beginning compilation
-            {
-                test: /\.jsx?$/,
-                loader: 'eslint',
-                include: srcDirs
-            }
-        ],
 
         loaders: [
             // Transpile JSX files

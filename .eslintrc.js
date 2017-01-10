@@ -1,38 +1,11 @@
-{
+module.exports = {
     "env": {
-        "browser": true,
-        "es6": true
+        "node": true
     },
+
     "parser": "babel-eslint",
-    "extends": ["eslint:recommended", "plugin:react/recommended"],
 
-    "plugins": [
-        "react"
-    ],
-
-    "ecmaFeatures": {
-        "arrowFunctions": true,
-        "binaryLiterals": true,
-        "blockBindings": true,
-        "classes": true,
-        "defaultParams": true,
-        "destructuring": true,
-        "forOf": true,
-        "generators": true,
-        "modules": true,
-        "objectLiteralComputedProperties": true,
-        "objectLiteralDuplicateProperties": true,
-        "objectLiteralShorthandMethods": true,
-        "objectLiteralShorthandProperties": true,
-        "octalLiterals": true,
-        "regexUFlag": true,
-        "regexYFlag": true,
-        "spread": true,
-        "superInFunctions": true,
-        "templateStrings": true,
-        "unicodeCodePointEscapes": true,
-        "globalReturn": true
-    },
+    "extends": ["eslint:recommended"],
 
     "rules": {
         "strict": [2, "global"],
@@ -65,7 +38,6 @@
         "no-new": 2,
         "no-octal-escape": 2,
         "no-param-reassign": 2,
-        "no-process-env": 2,
         "no-proto": 2,
         "no-return-assign": 2,
         "no-script-url": 2,
@@ -131,4 +103,4 @@
         "require-yield": 2,
         "max-len": [2, 120, 4]
     }
-}
+};
