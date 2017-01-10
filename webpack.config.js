@@ -9,7 +9,7 @@ const isProd = process.env['NODE_ENV'] === 'production';
 
 const webpackConfig = {
     entry: {
-        index: './src/index.js',
+        index: './src/client/index.js',
     },
     output: {
         path: './build/bundles/',

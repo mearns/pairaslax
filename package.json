@@ -2,6 +2,9 @@
   "name": "pairaslax",
   "version": "0.0.0",
   "description": "Parallaxy web UI",
+  "bin": {
+    "pairaslax-demo-server": "build/server/index.js"
+  },
   "scripts": {
     "clean": "rimraf dist/",
     "check:lint:src": "eslint src/ --ext .js --ext .jsx",
@@ -9,9 +12,13 @@
     "check:lint": "npm run check:lint:src && npm run check:lint:webpack-config",
     "check": "npm run check:lint",
     "test": "nyc mocha",
+    "compile:templates": "mkdirp build/templates/ && copyfiles --up 2 'src/templates/**/*' build/templates/",
     "compile:webpack": "webpack --config webpack.config.js",
-    "compile": "npm run compile:webpack",
-    "build": "npm run clean && npm run check && npm run compile"
+    "compile": "npm run compile:webpack && npm run compile:templates",
+    "transpile:server": "babel src/server/ --out-dir build/server/",
+    "transpile": "npm run transpile:server",
+    "build": "npm run clean && npm run check && npm run compile && npm run transpile",
+    "start": "node build/server/index.js"
   },
   "repository": {
     "type": "git",
@@ -67,7 +74,13 @@
     "webpack": "1.13.0"
   },
   "dependencies": {
+    "copyfiles": "1.0.0",
+    "deep-assign": "2.0.0",
+    "express": "4.14.0",
+    "handlebars": "4.0.6",
+    "mz": "2.6.0",
     "react": "15.4.2",
-    "react-dom": "15.4.2"
+    "react-dom": "15.4.2",
+    "yargs": "6.6.0"
   }
 }
