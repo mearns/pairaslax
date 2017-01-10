@@ -1,9 +1,15 @@
 
-const Renderable = function () {
-    this._init.apply(this, arguments);
-}
+const Renderable = function () {}
 
-Renderable.prototype._init = function() {};
+Renderable.prototype.getInitialState = function () {
+    return {};
+};
+
+Renderable.prototype.getDefaultProps = function () {
+    return {
+        scale: 1
+    };
+};
 
 /**
  * Return the dimensions of this object in the form {w, h}
@@ -13,10 +19,8 @@ Renderable.prototype.getDimensions = function () {
     throw new Error('Not Implemented');
 };
 
-/**
- * Render a representation of this object at the specified scale into
- * the specified containerEle.
- */
-Renderable.prototype.render = function (contairEle, scale) {
+Renderable.prototype.render = function () {
     throw new Error('Not Implemented');
 };
+
+const RenderableView = React.createClass(Renderable.prototype);

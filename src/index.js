@@ -1,7 +1,6 @@
 
 function load () {
     const frameContainerElem = document.getElementById('frame');
-    console.log(frameContainerElem);
 
     const scene = new Scene({
         frame: {
@@ -72,7 +71,6 @@ function load () {
     const step = function (ttl) {
         scene.move({x: -4, y: 1.5, z: 0});
         scene.render(frameContainerElem);
-        console.log(ttl);
         if (ttl > 0) {
             setTimeout(() => step(ttl-1), 33);
         }

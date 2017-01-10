@@ -1,13 +1,19 @@
 
 
-const Scene = function () {
-    this._init.apply(this, arguments);
-}
+const Scene = function () {};
 
-Scene.prototype._init = function (options) {
-    this._framePosition = options.frame;
-    this._convergenceLength = options.convergenceLength;
-    this._sceneObjects = [];
+Scene.prototype.getInitialState = function () {
+    return {
+        framePosition: {
+            x: 0,
+            y: 0
+        },
+        convergenceLength: 1,
+    };
+};
+
+Scene.prototype.getDefaultProps = function () {
+    return {};
 };
 
 /**
@@ -35,10 +41,8 @@ Scene.prototype.move = function(delta) {
     this._framePosition.z += dz;
 };
 
+// XXX
 Scene.prototype.render = function (containerEle) {
-    while (containerEle.hasChildNodes()) {
-      containerEle.removeChild(containerEle.lastChild);
-    }
     this._sceneObjects.forEach((sceneObj) => {
         const pos = sceneObj.getLocation();
         const dz = pos.z - this._framePosition.z;
@@ -74,3 +78,4 @@ Scene.prototype.render = function (containerEle) {
     }, this);
 };
 
+const SceneView = React.createClass(Scene.prototype);

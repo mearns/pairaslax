@@ -1,17 +1,19 @@
 
-const SceneObject = function () {
-    this._init.apply(this, arguments);
-}
+const SceneObject = function () {}
 
-SceneObject.prototype._init = function (options) {
-    this._renderable = options.renderable;
-    this._location = options.location;
+SceneObject.prototype.getInitialState = function () {
+    return {};
 };
 
-SceneObject.prototype.getRenderable = function () {
-    return this._renderable;
+SceneObject.prototype.getDefaultProps = function () {
+    return {
+        renderable: null,
+        location: {x: 0, y: 0}
+    };
 };
 
-SceneObject.prototype.getLocation = function () {
-    return this._location;
+SceneObject.prototype.render = function () {
+    throw new Error('Not Implemented');
 };
+
+const SceneObjectView = React.createClass(SceneObject.prototype)
