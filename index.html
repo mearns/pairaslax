@@ -8,10 +8,17 @@
 
 <body onload='load()'>
     <div id='frame' style='position: relative; border: 1px solid gray; overflow: hidden; width: 1000px; height: 400px'></div>
+    <div id='react-frame'></div>
 
+    <script src="https://unpkg.com/react@15/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
     <script type='text/javascript' src='src/Renderable.js'></script>
     <script type='text/javascript' src='src/SceneObject.js'></script>
     <script type='text/javascript' src='src/Scene.js'></script>
     <script type='text/javascript' src='src/index.js'></script>
+
+    <script type='text/javascript'>
+        ReactDOM.render(React.createElement('h1', null, 'Hello, React!'), document.getElementById('react-frame'));
+    </script>
 </body>
 </html>
