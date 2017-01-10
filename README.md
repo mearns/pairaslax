@@ -1,0 +1,2 @@
+# pairaslax
+Parallaxy web UI
