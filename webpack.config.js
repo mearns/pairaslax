@@ -1,8 +1,9 @@
 const webpack = require('webpack');
 const process = require('process');
+const path = require('path');
 const VERSION = require('./package.json').version;
 
-const srcDirs = ['./src'];
+const srcDirs = [path.resolve(__dirname, 'src')];
 
 const isProd = process.env['NODE_ENV'] === 'production';
 
@@ -15,18 +16,28 @@ const webpackConfig = {
         filename: `[name]-${VERSION}.js`
     },
     module: {
+        preLoaders: [
+            // Lint all JS files before beginning compilation
+            {
+                test: /\.jsx?$/,
+                loader: 'eslint',
+                include: srcDirs
+            }
+        ],
+
         loaders: [
             // Transpile JSX files
             {
                 test: /\.jsx$/,
-                loader: 'jsx-loader'
+                loader: 'jsx-loader',
+                include: srcDirs
             },
 
             // Transpile all JS files with babel
             {
                 test: /\.jsx?$/,
                 loader: 'babel-loader',
-                exclude: /node_modules/
+                include: srcDirs
             }
         ]
     },
